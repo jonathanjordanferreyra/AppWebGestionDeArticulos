@@ -27,5 +27,19 @@ namespace Presentacion
                 throw;
             }
         }
+
+        protected void btnDetalle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string valor = ((Button)sender).CommandArgument;
+                Response.Redirect("DetalleArticulo.aspx?id=" + valor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

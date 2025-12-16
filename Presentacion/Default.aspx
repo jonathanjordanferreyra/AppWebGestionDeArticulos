@@ -20,7 +20,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                 <p class="card-text"><%#Eval("Descripcion") %></p>
-                                <a href="DetalleArticulo.aspx?id=" <%#Eval("Id") %> class="btn btn-primary">Detalle</a>
+                                <asp:Button CssClass="btn btn-primary" ID="btnDetalle" runat="server" OnClick="btnDetalle_Click" Text="Detalle" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" />
                             </div>
                         </div>
                     </div>
