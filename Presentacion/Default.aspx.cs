@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,27 @@ namespace Presentacion
 
                 throw;
             }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //List<Articulo> ListaFiltrada = ((List<Articulo>)Session["Lista"]).FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            //RepeaterProductos.DataSource = ListaFiltrada;
+            //RepeaterProductos.DataBind();}
+            
+            //Lo hice asi porque segun yo es más escalable que guardarlo en sesión si tenes muchos articulos
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            RepeaterProductos.DataSource = negocio.BuscarPorNombre(txtFiltro.Text);
+            RepeaterProductos.DataBind();
+
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            txtFiltro.Text = "";
+            RepeaterProductos.DataSource = negocio.ListarArticulos();
+            RepeaterProductos.DataBind();
         }
     }
 }

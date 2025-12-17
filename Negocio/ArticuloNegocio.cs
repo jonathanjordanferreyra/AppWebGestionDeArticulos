@@ -145,5 +145,72 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public List<Articulo> BuscarPorNombre(string nombreArticulo)
+        {
+            List<Articulo> ListaFiltrada = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("Select A.Id,A.Nombre,A.Codigo,A.Descripcion,A.ImagenUrl,A.Precio,A.IdMarca,A.IdCategoria,M.Descripcion as Marca,C.Descripcion as Categoria from ARTICULOS as A,MARCAS as M,CATEGORIAS as C where A.IdCategoria = C.Id and A.IdMarca = M.Id and A.Nombre LIKE @nombre");
+                datos.SetearParametros("@nombre", "%" + nombreArticulo + "%");
+                datos.EjecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    if (datos.Lector["Nombre"] != DBNull.Value)
+                    {
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    }
+                    if (datos.Lector["Codigo"] != DBNull.Value)
+                    {
+                        aux.Codigo = (string)datos.Lector["Codigo"];
+                    }
+                    if (datos.Lector["Descripcion"] != DBNull.Value)
+                    {
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    }
+                    if (datos.Lector["ImagenUrl"] != DBNull.Value)
+                    {
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    }
+                    if (datos.Lector["Precio"] != DBNull.Value)
+                    {
+                        aux.Precio = (decimal)datos.Lector["Precio"];
+                    }
+
+                    aux.Marca = new Marca();
+                    if (datos.Lector["IdMarca"] != DBNull.Value)
+                    {
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    }
+                    if (datos.Lector["Marca"] != DBNull.Value)
+                    {
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    }
+                    aux.Categoria = new Categoria();
+                    if (datos.Lector["IdCategoria"] != DBNull.Value)
+                    {
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    }
+                    if (datos.Lector["Categoria"] != DBNull.Value)
+                    {
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    }
+                    ListaFiltrada.Add(aux);
+                }
+                return ListaFiltrada;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
