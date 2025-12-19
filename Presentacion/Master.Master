@@ -22,7 +22,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
-                            <a class="nav-link" href="#">---</a>
+                            <a class="nav-link" href=Administracion.aspx>Administración</a>
                             <a class="nav-link" href="#">---</a>
                             <a class="nav-link disabled" aria-disabled="true">Administración</a>
                         </div>

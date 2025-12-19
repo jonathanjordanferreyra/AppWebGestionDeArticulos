@@ -11,7 +11,14 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblError.Text = Session["Error"].ToString();
+            if (Session["Error"] != null)
+            {
+                lblError.Text = Session["Error"].ToString();
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
     }
 }

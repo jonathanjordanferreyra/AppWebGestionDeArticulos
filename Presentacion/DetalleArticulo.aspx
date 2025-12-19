@@ -19,7 +19,7 @@
                 <div class="col-6 mt-5">
                     <!--información del artículo-->
                     <h2>
-                        <asp:TextBox ID="txtNombre" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
                     </h2>
                     <h4>
                         <asp:Label ID="lblPrecio" runat="server" CssClass="form-label" Text="Precio"></asp:Label>
