@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <asp:GridView ID="GVArticulos" AutoGenerateColumns="false" CssClass="table table-dark table-striped" AllowPaging="true" PageSize="3" PagerStyle-ForeColor="Gold" PagerStyle-BorderStyle="Solid" PagerStyle-Font-Bold="true" OnPageIndexChanging="GVArticulos_PageIndexChanging" runat="server">
+                        <asp:GridView ID="GVArticulos" AutoGenerateColumns="false" CssClass="table table-dark table-striped" AllowPaging="true" PageSize="5" PagerStyle-ForeColor="Gold" PagerStyle-BorderStyle="Solid" PagerStyle-Font-Bold="true" OnPageIndexChanging="GVArticulos_PageIndexChanging" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="Código" DataField="Codigo" />
                                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -44,9 +44,10 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:F2}" />
-                                <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Editar/Agregar" />
+                                <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Editar/Modificar" />
                             </Columns>
                         </asp:GridView>
+                        <asp:Button ID="BtnAgregar" runat="server" CssClass="btn btn-primary" Text="Agregar Artículo" OnClick="BtnAgregar_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

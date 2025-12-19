@@ -42,5 +42,10 @@ namespace Presentacion
             GVArticulos.DataSource = negocio.ListarArticulos();
             GVArticulos.DataBind();
         }
+
+        protected void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Formulario.aspx");
+        }
     }
 }

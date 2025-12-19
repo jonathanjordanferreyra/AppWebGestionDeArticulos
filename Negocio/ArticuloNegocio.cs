@@ -212,5 +212,30 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void AgregarArticulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) VALUES (@codigo, @nombre, @descripcion, @idmarca, @idcategoria, @imagenurl, @precio)");
+                datos.SetearParametros("@codigo", articulo.Codigo);
+                datos.SetearParametros("@nombre", articulo.Nombre);
+                datos.SetearParametros("@descripcion", articulo.Descripcion);
+                datos.SetearParametros("@idmarca", articulo.Marca.Id);
+                datos.SetearParametros("@idcategoria", articulo.Categoria.Id);
+                datos.SetearParametros("@imagenurl", articulo.ImagenUrl);
+                datos.SetearParametros("@precio", articulo.Precio);
+                datos.EjecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
