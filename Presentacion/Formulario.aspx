@@ -48,12 +48,12 @@
                     <div class="col">
                         <!-- Precio y descripcion -->
                         <asp:Label Text="Precio" CssClass="form-label" runat="server" />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Ingrese un valor numérico" CssClass="text-danger" ValidationExpression="^[0-9]+$" ControlToValidate="txtPrecio"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Ingrese un valor numérico" CssClass="text-danger" ValidationExpression="^\d+(\.\d+)?$" ControlToValidate="txtPrecio"></asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Ingrese un valor numérico" CssClass="text-danger" ControlToValidate="txtPrecio"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtPrecio" CssClass="form-control mb-2" runat="server"></asp:TextBox><asp:Label Text="Descripción" CssClass="form-label" runat="server" />
                         <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control mb-4" runat="server"></asp:TextBox>
                         <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" CssClass="btn btn-success" runat="server" Text="Aceptar" />
-                        <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" runat="server" CssClass="btn btn-danger" Text="Cancelar" />
+                        <asp:Button ID="btnCancelar" CausesValidation="false" OnClick="btnCancelar_Click" runat="server" CssClass="btn btn-danger" Text="Cancelar" />
                     </div>
                 </div>
             </div>

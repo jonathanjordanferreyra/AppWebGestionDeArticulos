@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <asp:GridView ID="GVArticulos" AutoGenerateColumns="false" CssClass="table table-dark table-striped" AllowPaging="true" PageSize="5" PagerStyle-ForeColor="Gold" PagerStyle-BorderStyle="Solid" PagerStyle-Font-Bold="true" OnPageIndexChanging="GVArticulos_PageIndexChanging" runat="server">
+                        <asp:GridView ID="GVArticulos" DataKeyNames="Id" OnSelectedIndexChanged="GVArticulos_SelectedIndexChanged" AutoGenerateColumns="false" CssClass="table table-dark table-striped" AllowPaging="true" PageSize="5" PagerStyle-ForeColor="Gold" PagerStyle-BorderStyle="Solid" PagerStyle-Font-Bold="true" OnPageIndexChanging="GVArticulos_PageIndexChanging" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="Código" DataField="Codigo" />
                                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

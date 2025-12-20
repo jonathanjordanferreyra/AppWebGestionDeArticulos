@@ -47,5 +47,11 @@ namespace Presentacion
         {
             Response.Redirect("Formulario.aspx");
         }
+
+        protected void GVArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = GVArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("Formulario.aspx?id=" + id);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Precargo drop down list
             txtId.Enabled = false;
             if (!IsPostBack)
             {
@@ -40,6 +41,24 @@ namespace Presentacion
                 }
 
 
+            }
+            //Si viene un ID por query string, estamos modificando.
+            if (Request.QueryString["id"] != null && !IsPostBack)
+            {
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                List<Articulo> lista = articuloNegocio.ListarArticulos(Request.QueryString["id"]);
+                Articulo seleccionado = lista[0];
+
+                //Precargar los datos
+                txtId.Text = seleccionado.Id.ToString();
+                txtNombre.Text = seleccionado.Nombre;
+                txtCodigo.Text = seleccionado.Codigo;
+                txtDescripcion.Text = seleccionado.Descripcion;
+                txtImagenUrl.Text = seleccionado.ImagenUrl;
+                txtPrecio.Text = seleccionado.Precio.ToString("0.00");
+                ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+                ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
+                imgArticulo.ImageUrl = seleccionado.ImagenUrl.ToString();
             }
         }
 
@@ -75,8 +94,17 @@ namespace Presentacion
                 articulo.Marca = new Marca();
                 articulo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                negocio.AgregarArticulo(articulo);
-                Response.Redirect("Administracion.aspx",false);
+                //Valido si quiero modificar o agregar
+                if (Request.QueryString["id"] != null)
+                {
+                    articulo.Id = int.Parse(txtId.Text);
+                    negocio.ModificarArticulo(articulo);
+                }
+                else
+                {
+                    negocio.AgregarArticulo(articulo);
+                }
+                Response.Redirect("Administracion.aspx", false);
             }
             catch (Exception ex)
             {
