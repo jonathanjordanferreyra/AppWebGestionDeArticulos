@@ -53,5 +53,23 @@ namespace Presentacion
             string id = GVArticulos.SelectedDataKey.Value.ToString();
             Response.Redirect("Formulario.aspx?id=" + id);
         }
+
+        protected void GVArticulos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int id = (int)GVArticulos.DataKeys[e.RowIndex].Value;
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                negocio.EliminarArticulo(id);
+                GVArticulos.DataSource = negocio.ListarArticulos();
+                GVArticulos.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", "Error al eliminar artículo. " + ex);
+                Response.Redirect("Error.aspx");
+            }
+        }
     }
 }

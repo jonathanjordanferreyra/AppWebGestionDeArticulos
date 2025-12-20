@@ -59,6 +59,7 @@ namespace Presentacion
                 ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
                 ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
                 imgArticulo.ImageUrl = seleccionado.ImagenUrl.ToString();
+                btnAceptar.Text = "Modificar";
             }
         }
 
