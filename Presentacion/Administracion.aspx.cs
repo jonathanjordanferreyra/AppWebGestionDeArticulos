@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,75 @@ namespace Presentacion
             {
                 Session.Add("Error", "Error al eliminar artículo. " + ex);
                 Response.Redirect("Error.aspx");
+            }
+        }
+
+        protected void txtFiltroAvanzado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCriterio.Items.Clear();
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Add("Empieza con");
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Termina con");
+            }
+        }
+
+        protected void CKBFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                List<Articulo> ListaFiltroAvanzado = negocio.FiltroAvanzado(ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString(), txtFiltroAvanzado.Text);
+                GVArticulos.DataSource = ListaFiltroAvanzado;
+                GVArticulos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", "Error al buscar con filtro avanzado " + ex);
+                Response.Redirect("Error.aspx");
+            }
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                if (CKBFiltroAvanzado.Checked)
+                {
+                    txtFiltroAvanzado.Text = "";
+                    GVArticulos.DataSource = articuloNegocio.ListarArticulos();
+                    GVArticulos.DataBind();
+                }
+                else
+                {
+                    txtFiltro.Text = "";
+                    GVArticulos.DataSource = articuloNegocio.ListarArticulos();
+                    GVArticulos.DataBind();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

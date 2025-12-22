@@ -221,6 +221,104 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+        public List<Articulo> FiltroAvanzado(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "Select A.Id,A.Nombre,A.Codigo,A.Descripcion,A.ImagenUrl,A.Precio,A.IdMarca,A.IdCategoria,M.Descripcion as Marca,C.Descripcion as Categoria from ARTICULOS as A,MARCAS as M,CATEGORIAS as C where A.IdCategoria = C.Id and A.IdMarca = M.Id and ";
+                //Logica para continuar el where
+                switch (campo)
+                {
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Empieza con":
+                                consulta += "A.Nombre LIKE @filtro";
+                                filtro += "%";
+                                break;
+
+                            case "Termina con":
+                                consulta += "A.Nombre LIKE @filtro";
+                                filtro = "%" + filtro;
+                                break;
+
+                            default:
+                                consulta += "A.Nombre LIKE @filtro";
+                                filtro = "%" + filtro + "%";
+                                break;
+                        }
+                        break;
+
+                    case "Marca":
+                        consulta += "M.Descripcion LIKE @filtro";
+                        filtro = "%" + filtro + "%";
+                        break;
+
+                    case "Categoría":
+                        consulta += "C.Descripcion LIKE @filtro";
+                        filtro = "%" + filtro + "%";
+                        break;
+
+                    case "Precio":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "A.Precio > @filtro";
+                                break;
+
+                            case "Menor a":
+                                consulta += "A.Precio < @filtro";
+                                break;
+
+                            default:
+                                consulta += "A.Precio = @filtro";
+                                break;
+                        }
+                        break;
+                }
+                datos.SetearConsulta(consulta);
+                datos.SetearParametros("@filtro", filtro);
+                datos.EjecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo articulo = new Articulo();
+                    articulo.Id = (int)datos.Lector["Id"];
+                    articulo.Nombre = (string)datos.Lector["Nombre"];
+                    articulo.Codigo = (string)datos.Lector["Codigo"];
+                    if (datos.Lector["Descripcion"] != DBNull.Value)
+                    {
+                        articulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    }
+                    if (datos.Lector["ImagenUrl"] != DBNull.Value)
+                    {
+                        articulo.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    }
+                    articulo.Precio = (decimal)datos.Lector["Precio"];
+                    articulo.Marca = new Marca();
+                    articulo.Marca.Id = (int)datos.Lector["IdMarca"];
+                    articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    articulo.Categoria = new Categoria();
+                    articulo.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    articulo.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+
+                    lista.Add(articulo);
+
+                }
+
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
         public void AgregarArticulo(Articulo articulo)
         {
