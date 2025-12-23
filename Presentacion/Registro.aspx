@@ -11,9 +11,9 @@
                     <asp:ValidationSummary ID="vsRegistro" runat="server" CssClass="text-danger" ValidationGroup="Registro" />
                     <div class="mb-3">
                         <asp:Label ID="lblNombre" runat="server" CssClass="form-label" Text="Nombre"></asp:Label>
-                        <asp:TextBox ID="txtNombreCompleto" runat="server" CssClass="form-control" ValidationGroup="Register" />
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ValidationGroup="Register" />
                         <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                            ControlToValidate="txtNombreCompleto" ErrorMessage="Nombre requerido"
+                            ControlToValidate="txtNombre" ErrorMessage="Nombre requerido"
                             CssClass="text-danger" Display="Dynamic" ValidationGroup="vgRegister" />
                     </div>
                     <div class="mb-3">
@@ -36,9 +36,10 @@
                         <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
                             ControlToValidate="txtPassword" ErrorMessage="Contraseña requerida"
                             CssClass="text-danger" Display="Dynamic" ValidationGroup="Registro" />
+                        <asp:Label ID="lblError" ForeColor="Red" runat="server" Text=""></asp:Label>
                     </div>
                     <div class="mb-3">
-                        <asp:Button ID="btnRegistro" runat="server" CssClass="btn btn-primary" Text="Crear Cuenta" ValidationGroup="Registro" />
+                        <asp:Button ID="btnRegistro" runat="server" OnClick="btnRegistro_Click" CssClass="btn btn-primary" Text="Crear Cuenta" ValidationGroup="Registro" />
                         <a class="btn btn-link align-self-center" href="Login.aspx">Iniciar sesión</a>
                     </div>
 

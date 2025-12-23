@@ -29,6 +29,7 @@
                         <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
                             ControlToValidate="txtPassword" ErrorMessage="Contraseña requerida"
                             CssClass="text-danger" Display="Dynamic" ValidationGroup="Login" />
+                        <asp:Label ID="lblError" ForeColor="Red" runat="server" Text=""></asp:Label>
                     </div>
 
                     <div class="mb-3">

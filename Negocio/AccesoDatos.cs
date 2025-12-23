@@ -67,6 +67,26 @@ namespace Negocio
                 CerrarConexion();
             }
         }
+        public int EjecutarSacalar()
+        {
+            try
+            {
+                Comando.Connection = Conexion;
+                Conexion.Open();
+                return int.Parse(Comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                //Limpio los parametros de anteriores consultas
+                Comando.Parameters.Clear();
+                CerrarConexion();
+            }
+        }
         public void CerrarConexion()
         {
             if (lector != null)
