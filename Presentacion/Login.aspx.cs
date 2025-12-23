@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
-    public partial class Master : System.Web.UI.MasterPage
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,12 +16,7 @@ namespace Presentacion
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
-        }
 
-        protected void btnRegistrarse_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Registro.aspx");
         }
     }
 }

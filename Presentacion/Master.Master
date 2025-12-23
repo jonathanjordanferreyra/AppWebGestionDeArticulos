@@ -28,8 +28,8 @@
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-outline-success me-2" type="button">Login</button>
-                        <button class="btn btn-warning btn-sm" type="button">Registrarse</button>
+                        <asp:Button ID="btnLogin" CssClass="btn btn-outline-success me-2" OnClick="btnLogin_Click" runat="server" Text="Login" />
+                        <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn btn-warning btn-sm" runat="server" Text="Registrarse" />
                     </div>
                 </div>
             </nav>
