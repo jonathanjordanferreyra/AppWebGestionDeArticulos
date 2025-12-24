@@ -31,7 +31,7 @@ namespace Presentacion
                 if (usuario != null)
                 {
                     Session.Add("Usuario",usuario);
-                    Response.Redirect("Default.aspx",false);
+                    Response.Redirect("Perfil.aspx",false);
                 }
                 else
                 {

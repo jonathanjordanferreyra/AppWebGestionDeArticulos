@@ -22,14 +22,22 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
-                            <a class="nav-link" href=Administracion.aspx>Administración</a>
-                            <a class="nav-link" href="#">---</a>
-                            <a class="nav-link disabled" aria-disabled="true">Administración</a>
+                            <a class="nav-link active" aria-current="page" href="Administracion.aspx">Administración</a>
+                            <a class="nav-link active" aria-current="page" href="Perfil.aspx">Mi Perfil</a>
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
                         </div>
                     </div>
                     <div>
-                        <asp:Button ID="btnLogin" CssClass="btn btn-outline-success me-2" OnClick="btnLogin_Click" runat="server" Text="Login" />
-                        <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn btn-warning btn-sm" runat="server" Text="Registrarse" />
+                        <%if (!Negocio.Seguridad.SesionActiva(Session["Usuario"]))
+                            { %>
+                        <a href="Login.aspx" class="btn btn-outline-success me-2">Login</a>
+                        <a href="Registro.aspx" class="btn btn-warning btn-sm">Registrarse</a>
+                        <%} %>
+                        <%else
+                            {%>
+                        <asp:Button ID="btnDesloguearse" OnClick="btnDesloguearse_Click" CssClass="btn btn-danger" runat="server" Text="Cerrar Sesión" />
+                        <%} %>
+                        <asp:Image ID="imgAvatar" runat="server" ImageUrl="https://cdn-icons-png.flaticon.com/512/4123/4123763.png" CssClass="rounded-circle" Style="width: 40px; height: 40px; object-fit: cover;" />
                     </div>
                 </div>
             </nav>

@@ -19,24 +19,24 @@
                 <div class="col-6 mt-5">
                     <!--información del artículo-->
                     <h2>
-                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" Enabled="false" CssClass="form-control" runat="server"></asp:TextBox>
                     </h2>
                     <h4>
                         <asp:Label ID="lblPrecio" runat="server" CssClass="form-label" Text="Precio"></asp:Label>
-                        <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPrecio" Enabled="false" CssClass="form-control" runat="server"></asp:TextBox>
                     </h4>
                     <h5>
                         <asp:Label ID="lblDescripcion" CssClass="form-label" runat="server" Text="Descripción"></asp:Label>
-                        <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDescripcion" Enabled="false" CssClass="form-control" runat="server"></asp:TextBox>
                     </h5>
                     <div class="row mb-3">
                         <div class="col-6">
                             <asp:Label ID="lblMarca" CssClass="form-label" runat="server" Text="Marca"></asp:Label>
-                            <asp:DropDownList ID="ddlMarca" CssClass="form-select" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlMarca" Enabled="false" CssClass="form-select" runat="server"></asp:DropDownList>
                         </div>
                         <div class="col-6">
                             <asp:Label ID="lblCategoria" runat="server" Text="Categoría"></asp:Label>
-                            <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlCategoria" Enabled="false" CssClass="form-select" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                 </div>

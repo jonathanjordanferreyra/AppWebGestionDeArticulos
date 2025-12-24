@@ -23,7 +23,8 @@
                         <asp:Label ID="lblFiltro" runat="server" CssClass="form-label" Text="Buscar"></asp:Label>
                         <asp:TextBox ID="txtFiltro" OnTextChanged="txtFiltro_TextChanged" AutoPostBack="true" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
-                    <%}%>
+                    <%}
+%>
                     <%else
                         { %>
                     <div class="col-6">

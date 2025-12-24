@@ -13,6 +13,11 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.EsAdmin(Session["Usuario"]))
+            {
+                Session["Error"] = "Necesitas ser admin para ingresar a esta página";
+                Response.Redirect("Error.aspx");
+            }
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();

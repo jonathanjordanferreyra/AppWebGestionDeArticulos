@@ -31,6 +31,7 @@ namespace Presentacion
                 int id = negocio.Registrarse(usuario);
                 if (id > 0)
                 {
+                    usuario.Id = id;
                     Session.Add("Usuario",usuario);
                     Response.Redirect("Default.aspx",false);
                 }
