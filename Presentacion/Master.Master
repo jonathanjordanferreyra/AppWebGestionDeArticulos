@@ -37,7 +37,7 @@
                             {%>
                         <asp:Button ID="btnDesloguearse" OnClick="btnDesloguearse_Click" CssClass="btn btn-danger" runat="server" Text="Cerrar Sesión" />
                         <%} %>
-                        <asp:Image ID="imgAvatar" runat="server" ImageUrl="https://cdn-icons-png.flaticon.com/512/4123/4123763.png" CssClass="rounded-circle" Style="width: 40px; height: 40px; object-fit: cover;" />
+                        <asp:Image ID="imgAvatar" runat="server" CssClass="rounded-circle" Style="width: 40px; height: 40px; object-fit: cover;" />
                     </div>
                 </div>
             </nav>

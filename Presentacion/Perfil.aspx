@@ -5,15 +5,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
         <div class="card shadow-sm p-4">
-            <h2 class="mb-4 text-center">Mi Perfil</h2>
+            <h2 class="mb-3 text-center">Mi Perfil</h2>
 
             <div class="row mb-3">
-                <div class="col-3 text-center">
+                <div class="col-4 text-center">
+                    <asp:Label Text="Imagen Perfil" CssClass="form-label" runat="server" />
+                    <asp:FileUpload ID="fuImagenPerfil" CssClass="form-control mb-2" runat="server" />
                     <asp:Image ID="imgPerfil"
-                        CssClass="img-fluid rounded-circle mb-3" Style="max-width: 150px;"
+                        CssClass="img-fluid rounded-circle mb-3" Style="width: 200px; height: 200px; object-fit: cover;"
                         runat="server" />
-                    <asp:Label Text="URL Imagen Perfil" CssClass="form-label" runat="server" />
-                    <asp:TextBox ID="txtUrlImagen" CssClass="form-control" runat="server" />
                 </div>
 
                 <div class="col">
@@ -32,9 +32,9 @@
                         <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server" />
                     </div>
 
-                    <asp:Button ID="btnGuardar" CssClass="btn btn-success" Text="Guardar cambios" runat="server" />
+                    <asp:Button ID="btnGuardar" OnClick="btnGuardar_Click" CssClass="btn btn-success" Text="Guardar cambios" runat="server" />
 
-                    <asp:Button ID="btnCancelar" CssClass="btn btn-secondary ms-2" Text="Cancelar" runat="server" />
+                    <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" CssClass="btn btn-secondary ms-2" Text="Cancelar" runat="server" />
                 </div>
             </div>
         </div>

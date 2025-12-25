@@ -9,6 +9,40 @@ namespace Negocio
 {
     public class UsuarioNegocio
     {
+        public void ActualizarPerfil(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (usuario.UrlImagenPerfil != null)
+                {
+                    datos.SetearConsulta("UPDATE USERS SET urlImagenPerfil = @imagen, nombre = @nombre, apellido = @apellido WHERE Id = @id");
+                    datos.SetearParametros("@imagen", usuario.UrlImagenPerfil);
+                    datos.SetearParametros("@nombre", usuario.Nombre);
+                    datos.SetearParametros("@apellido", usuario.Apellido);
+                    datos.SetearParametros("@id", usuario.Id);
+                    datos.EjecutarAccion();
+                }
+                else
+                {
+                    datos.SetearConsulta("UPDATE USERS SET nombre = @nombre, apellido = @apellido WHERE Id = @id");
+                    datos.SetearParametros("@nombre", usuario.Nombre);
+                    datos.SetearParametros("@apellido", usuario.Apellido);
+                    datos.SetearParametros("@id", usuario.Id);
+                    datos.EjecutarAccion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
         public Usuario Login(string email, string password)
         {
             AccesoDatos datos = new AccesoDatos();

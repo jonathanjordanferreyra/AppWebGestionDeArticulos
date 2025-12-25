@@ -1,10 +1,12 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.WebRequestMethods;
 
 namespace Presentacion
 {
@@ -18,6 +20,14 @@ namespace Presentacion
                 {
                     Response.Redirect("Login.aspx", false);
                 }
+            }
+            if (Seguridad.SesionActiva(Session["Usuario"]) && ((Usuario)Session["Usuario"]).UrlImagenPerfil != null)
+            {
+                imgAvatar.ImageUrl = "~/Images/" + ((Usuario)Session["Usuario"]).UrlImagenPerfil;
+            }
+            else
+            {
+                imgAvatar.ImageUrl = "https://cdn-icons-png.flaticon.com/512/4123/4123763.png";
             }
         }
 
