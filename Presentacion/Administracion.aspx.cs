@@ -102,7 +102,20 @@ namespace Presentacion
 
         protected void CKBFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
         {
-
+            ddlCampo.SelectedIndex = 0;
+            ddlCriterio.Items.Clear();
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Add("Empieza con");
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Termina con");
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

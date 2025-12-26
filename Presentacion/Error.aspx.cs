@@ -14,6 +14,7 @@ namespace Presentacion
             if (Session["Error"] != null)
             {
                 lblError.Text = Session["Error"].ToString();
+                Session.Remove("Error");
             }
             else
             {

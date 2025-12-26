@@ -24,7 +24,7 @@
                         <asp:TextBox ID="txtFiltro" OnTextChanged="txtFiltro_TextChanged" AutoPostBack="true" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                     <%}
-%>
+                    %>
                     <%else
                         { %>
                     <div class="col-6">
@@ -36,7 +36,7 @@
                         <asp:Button ID="btnLimpiar" CssClass="btn btn-secondary" OnClick="btnLimpiar_Click" runat="server" Text="Limpiar" />
                     </div>
                     <div class="col-2 mt-4">
-                        <asp:CheckBox ID="CKBFiltroAvanzado"  AutoPostBack="true" CssClass="form-check" Text="Filtro Avanzado" runat="server" OnCheckedChanged="CKBFiltroAvanzado_CheckedChanged" />
+                        <asp:CheckBox ID="CKBFiltroAvanzado" AutoPostBack="true" CssClass="form-check" Text="Filtro Avanzado" runat="server" OnCheckedChanged="CKBFiltroAvanzado_CheckedChanged" />
                     </div>
                 </div>
                 <%if (CKBFiltroAvanzado.Checked)
@@ -54,6 +54,7 @@
                     <div class="col-4">
                         <asp:Label ID="lblCriterio" runat="server" CssClass="form-label" Text="Criterio"></asp:Label>
                         <asp:DropDownList ID="ddlCriterio" CssClass="form-control" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Seleccione un criterio" CssClass="text-danger" Display="Dynamic" ControlToValidate="ddlCriterio"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-2 mt-4">
                         <asp:Button ID="btnBuscar" OnClick="btnBuscar_Click" CssClass="btn btn-primary" runat="server" Text="Buscar" />

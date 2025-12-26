@@ -36,10 +36,6 @@
                         <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" OnClick="btnLogin_Click" Text="Ingresar" ValidationGroup="Login" />
                         <a class="btn btn-link align-self-center" href="Registro.aspx">Crear cuenta</a>
                     </div>
-
-                    <div class="mt-3 small">
-                        <a href="RecuperarPassword.aspx">¿Olvidaste tu contraseña?</a>
-                    </div>
                 </div>
             </div>
         </div>
