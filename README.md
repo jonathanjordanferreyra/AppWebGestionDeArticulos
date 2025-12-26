@@ -16,6 +16,27 @@ Incluye autenticación de usuarios, gestión de perfiles y funcionalidades de fa
 - Manejo centralizado de errores
 
 ---
+## Capturas de pantalla
+
+### Catálogo
+![Home](Presentacion/Screenshots/Home.png)
+
+### Login
+![Login](Presentacion/Screenshots/Login.png)
+
+### Perfil de usuario
+![Perfil](Presentacion/Screenshots/Perfil.png)
+
+### Favoritos
+![Favoritos](Presentacion/Screenshots/Favoritos.png)
+
+### Administración
+![Administracion](Presentacion/Screenshots/Administracion.png)
+
+### Alta de artículo
+![AltaArticulo](Presentacion/Screenshots/AltaArticulo.png)
+
+---
 
 ## 🛠️ Tecnologías utilizadas
 
