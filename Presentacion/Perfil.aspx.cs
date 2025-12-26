@@ -40,7 +40,6 @@ namespace Presentacion
                 Usuario usuario = (Usuario)Session["Usuario"];
                 usuario.Nombre = txtNombre.Text;
                 usuario.Apellido = txtApellido.Text;
-                usuarioNegocio.ActualizarPerfil(usuario);
                 Session["Usuario"] = usuario;
                 if (fuImagenPerfil.HasFile)
                 {
@@ -54,8 +53,9 @@ namespace Presentacion
                     string ruta = Server.MapPath("./Images/");
                     fuImagenPerfil.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + extension);
                     usuario.UrlImagenPerfil = "perfil-" + usuario.Id + extension;
-                    imgPerfil.ImageUrl = "~/Images/" + usuario.UrlImagenPerfil;
+                    imgPerfil.ImageUrl = "~/Images/" + usuario.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks;
                 }
+                usuarioNegocio.ActualizarPerfil(usuario);
 
             }
             catch (Exception ex)

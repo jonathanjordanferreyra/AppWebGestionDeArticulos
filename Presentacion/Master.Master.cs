@@ -21,7 +21,7 @@ namespace Presentacion
                     Response.Redirect("Login.aspx", false);
                 }
             }
-            if (Seguridad.SesionActiva(Session["Usuario"]) && ((Usuario)Session["Usuario"]).UrlImagenPerfil != null)
+            if (Seguridad.SesionActiva(Session["Usuario"]) && !string.IsNullOrEmpty(((Usuario)Session["Usuario"]).UrlImagenPerfil))
             {
                 imgAvatar.ImageUrl = "~/Images/" + ((Usuario)Session["Usuario"]).UrlImagenPerfil;
             }

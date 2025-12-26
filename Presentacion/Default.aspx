@@ -34,6 +34,7 @@
                                         <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                         <p class="card-text"><%#Eval("Descripcion") %></p>
                                         <asp:Button CssClass="btn btn-primary" ID="btnDetalle" runat="server" OnClick="btnDetalle_Click" Text="Detalle" CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" />
+                                        <asp:Button ID="btnFavoritos" CssClass="btn btn-outline-warning" CommandName="Favoritos" CommandArgument='<%#Eval("Id") %>' runat="server" Text="⭐" OnClick="btnFavoritos_Click" />
                                     </div>
                                 </div>
                             </div>

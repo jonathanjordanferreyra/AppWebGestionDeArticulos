@@ -48,7 +48,7 @@ namespace Presentacion
             //List<Articulo> ListaFiltrada = ((List<Articulo>)Session["Lista"]).FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
             //RepeaterProductos.DataSource = ListaFiltrada;
             //RepeaterProductos.DataBind();}
-            
+
             //Lo hice asi porque segun yo es más escalable que guardarlo en sesión si tenes muchos articulos
             ArticuloNegocio negocio = new ArticuloNegocio();
             RepeaterProductos.DataSource = negocio.BuscarPorNombre(txtFiltro.Text);
@@ -62,6 +62,33 @@ namespace Presentacion
             txtFiltro.Text = "";
             RepeaterProductos.DataSource = negocio.ListarArticulos();
             RepeaterProductos.DataBind();
+        }
+
+        protected void btnFavoritos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["Usuario"] == null)
+                {
+                    Session.Add("Error", "Debes loguearte para poder agregar a favoritos.");
+                    Response.Redirect("Error.aspx");
+                    return;
+                }
+                else
+                {
+                    Usuario usuario = (Usuario)Session["Usuario"];
+                    FavoritosNegocio negocio = new FavoritosNegocio();
+                    int IdArticulo = int.Parse(((Button)sender).CommandArgument);
+                    negocio.Agregar(usuario.Id, IdArticulo);
+                    Response.Redirect("Favoritos.aspx", false);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }
