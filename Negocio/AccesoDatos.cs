@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Negocio
 {
@@ -20,7 +21,9 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            Conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
+            Conexion = new SqlConnection(
+                ConfigurationManager.ConnectionStrings["CatalogoDB"].ConnectionString
+            );
             Comando = new SqlCommand();
         }
         public void SetearConsulta(string consulta)

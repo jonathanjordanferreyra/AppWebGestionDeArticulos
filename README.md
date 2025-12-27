@@ -61,7 +61,9 @@ El proyecto está organizado en capas:
 
 Proyecto finalizado –  
 Trabajo Práctico Final del curso **C# Nivel 3**.
-
+Podés probarlo acá: http://www.jonagestioncatalogo.somee.com/
+Video demostrativo: 
+https://www.linkedin.com/posts/jonathanjordanferreyra_programacion-csharp-aspnet-activity-7410463436507209728-4MDq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFrKnr4BhH3SoZRkqKiP4TDQ3u1D3F1744Q
 ---
 
 ## 👤 Autor
